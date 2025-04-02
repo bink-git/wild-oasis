@@ -1,31 +1,24 @@
 import styled from 'styled-components';
 import GlobalStyles from './styles/GlobalStyles';
+import Button from './ui/Button';
+import Input from './ui/Input';
+import Heading from './ui/Heading';
 
-const H1 = styled.h1`
-  color: var(--color-primary);
-  font-size: 2.4rem;
-  font-weight: 600;
-  background-color: yellow;
-`;
-
-const Button = styled.button`
-  font-size: 1.6rem;
-  background-color: purple;
-  color: white;
-  border: none;
-  font-weight: 500;
-  border-radius: 7px;
-  padding: 1.2rem 1.6rem;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+const StyledApp = styled.div`
+  background-color: orangered;
+  padding: 2rem;
 `;
 
 function App() {
   return (
     <>
-      <GlobalStyles />
-      <H1>Hello world</H1>
-      <Button>Click me</Button>
+      <StyledApp>
+        <GlobalStyles />
+        <Heading as="h1">Hello world</Heading>
+        <Heading as="h2">Hello world</Heading>
+        <Button>Click me</Button>
+        <Input type="number" placeholder="Number of guests" />
+      </StyledApp>
     </>
   );
 }
