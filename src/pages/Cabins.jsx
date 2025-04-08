@@ -5,15 +5,15 @@ import { getCabins } from '../services/apiCabins';
 import CabinTable from '../features/cabins/CabinTable';
 
 function Cabins() {
-  useEffect(() => {
-    getCabins()
-      .then((data) => {
-        console.log('Cabins data:', data);
-      })
-      .catch((error) => {
-        console.error('Error fetching cabins:', error);
-      });
-  }, []);
+  // useEffect(() => {
+  //   getCabins()
+  //     .then((data) => {
+  //       console.log('Cabins data:', data);
+  //     })
+  //     .catch((error) => {
+  //       console.error('Error fetching cabins:', error);
+  //     });
+  // }, []);
 
   return (
     <>
