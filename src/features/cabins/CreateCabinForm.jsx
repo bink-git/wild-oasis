@@ -51,26 +51,21 @@ const Error = styled.span`
 function CreateCabinForm() {
   const queryClient = useQueryClient();
 
-  const { mutate, isLoading } = useMutation({
+  const { register, handleSubmit, reset } = useForm();
+
+  const { mutate, isLoading: isCreating } = useMutation({
     mutationFn: createCabin,
     onSuccess: () => {
       toast.success('The cabin was created successfully.');
       queryClient.invalidateQueries({
         queryKey: ['cabins'],
       });
+      reset();
+    },
+    onError: (error) => {
+      toast.error(error.message);
     },
   });
-
-  const { register, handleSubmit } = useForm();
-
-  // async function onSubmit(newCabin) {
-  //   const { data, error } = await supabase.from('cabins').insert([newCabin]);
-
-  //   if (error) {
-  //     console.log(error);
-  //   }
-  //   return data;
-  // }
 
   function onSubmit(data) {
     mutate(data);
@@ -123,7 +118,7 @@ function CreateCabinForm() {
         <Button variation="secondary" type="reset">
           Cancel
         </Button>
-        <Button>Add cabin</Button>
+        <Button disabled={isCreating}>Add cabin</Button>
       </FormRow>
     </Form>
   );
